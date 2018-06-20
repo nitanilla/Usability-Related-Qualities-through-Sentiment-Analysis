@@ -1,0 +1,781 @@
+text,id,state,title,body,created,updated,url,comments,score,user,project,query,enhancement,bug,duplicate,helpwanted,invalid,wontfix,question
+1,314488406,open,Rocket.Chat Apps boilerplate Bot to replace Internal Hubot,"## What is this?
+
+Rocket.Chat Apps can provide a starting point for bespoke chat ops / messaging automation, to replace the current Internal Hubot.
+
+Note the distinction between _internal_ and _external_ bots:
+
+- External hosted bots use a platform or framework adapter to login and operate a user account. They are suited to messaging-heavy interactions and/or where maintenance or processes are independent of Rocket.Chat.
+- Internal bots are tightly coupled with the architecture of Rocket.Chat, but (at least currently) have limited features for conversational UI. Their provisioning and operation is dependent on the Rocket.Chat server.
+
+## Why do it?
+
+The internal Hubot is outdated, it’s utility for enterprises and teams is limited and its documentation and usability is a challenge blocking many users from making the most of it.
+
+Rocket.Chat now has much better options for messaging automation from progress toward an app marketplace model and the recent updates towards an SDK for multiple bot platform/framework adapters.
+
+Integrating custom processes into the core codebase and the generic “Rocket.Cat” bot identity is harder to maintain and can be confusing for users to interact with.
+
+## How will it help?
+
+- Instances can maintain bot driven logic without requiring a fork of core Rocket.Chat
+- Customised identity for bots in a Rocket.Chat instance distinct from the “system bot”
+- Clearer semantics between system notifications and instance’s specific business logic
+- Access to apps API endpoints will open new features to internal bots
+- Multiple internal bots can provide different behaviours from unique bot user profiles
+
+## What does it need?
+
+- App with same features as a bot: receive, send, reply, store data, call API
+- Provide http listeners for triggering internal methods / interactions
+- Make http requests to get data to trigger or populate a message send
+- Documentation for getting started with defining a new bot app and writing scripts
+- Boilerplate examples to show simple common use cases achieved by bot app
+
+## What’s the plan?
+
+- Identify some use cases of current internal Hubot extensions
+- Build and document example implementations with Rocket.Chat Apps to replace Internal Hubot interactions
+- Build a replacement for Rocket.Cat as default packaged app-bot
+- Update docs for a clear purpose for the single system bot as a simple service butler, that will no longer be extended with instance specific scripts.
+
+## How can we help?
+
+If this spec effects you and you’d like to help out, what we need at this stage is to understand the types of use cases currently implemented with the Internal Hubot, so we can provide useful templates and guides to migrate your Hubot scripts into Rocket.Chat apps.
+
+Related to #10456, #6640, #8025 ",2018-04-16T03:24:20Z,2018-04-16T03:24:56Z,https://github.com/RocketChat/Rocket.Chat/issues/10458,0,57.022415,timkinnane,https://api.github.com/repos/RocketChat/Rocket.Chat,usability,0,0,0,0,0,0,0
+2,320612833,open,Sr. iOS Developer,"Company Introduction
+
+FUNTEK Inc. (http://funtek.co) is a software company providing chat solutions with custom enterprise features. The core product IMKit is a suite of SDK providing in-app or in-web messaging to enable the conversational business for enterprise. Our clients spread from IPO company, large brands and startups in Taiwan, Hong Kong and Singapore. FUNTEK Headquartered in Taipei, Taiwan, is one of the member in Orange Fab Asia Taipei since April, 2017.  
+
+Job Brief
+We are looking for several Senior iOS Developer who possesses a passion for pushing iOS technologies to the limits. This Senior iOS Developer will build and maintain the next generation of our solution - IMKit and other related iOS Products.
+
+Responsibilities
+
+- Design and develop the iOS Product.
+- Work on bug fixing and improving product performance.
+- Collaborate with cross-functional teams to define, design, and ship new features.
+- Work with outside data sources and APIs.
+- Unit-test code for robustness, including edge cases, usability, and reliability.
+- Continuously implement new iOS technologies to maximize development efficiency.
+
+Requirements
+- BS/MS degree in Computer Science or a related subject.
+- Familiar programming with Swift 4.0 and Objective-C 2.0.
+- Have published at least one original iOS app.
+- Experience with iOS SDK.
+- Experience with BLE (Bluetooth Low Energy 4.0) development and BLE data parsing.
+- Experience working with socket.io.
+- Experience working with remote data via REST and JSON.
+- Experience with third-party libraries and APIs.
+",2018-05-06T17:50:31Z,2018-05-06T17:50:56Z,https://github.com/FUNTEKco/jobs/issues/2,0,51.530396,brianfang,https://api.github.com/repos/FUNTEKco/jobs,usability,0,0,0,0,0,0,0
+3,313142174,open,Do not close search sidebar on idle timeout,"### Description:
+
+There seem to be two related issues:
+1. The search sidebar closes on idle timeout
+2. The user interface for Idle Time Limit does not specify the unit in which the timeout is being configured
+
+The combination of these made for a very vexing issue that took a long time to isolate, where the search sidebar was totally unusable due to constantly closing every few milliseconds, making it impossible to search for and contact someone.
+
+### Server Setup Information:
+
+* Version of Rocket.Chat Server: 0.63.1
+* Operating System: Ubuntu 16.04 LTS  (4.4.0-119-generic)
+* Deployment Method(snap/docker/tar/etc): SNAP
+* Number of Running Instances: 1
+* DB Replicaset Oplog: Enabled?
+* Node Version: v8.9.4
+* mongoDB Version: v3.2.7
+
+### Client Binary
+
+* Rocket.Chat+ Version 2.10.5
+* Windows 7 Professional x64 Service Pack 1
+
+### Steps to Reproduce:
+
+1. Adjust the automatic-away idle time limit to something really low:
+My Account <U+2192> Preferences <U+2192> USER PRESENCE <U+2192> Idle Time Limit: 300
+2. Go back to normal messaging, then press the magnifying glass ""Search"" button to bring up the Search sidebar.
+3. Observe that in 300 milliseconds or less, the search bar closes, making it unusable for searching.
+
+### Expected behavior:
+
+The search sidebar does not close.
+The Idle Time Limit specifies the unit of time.
+
+### Actual behavior:
+
+The search sidebar closes too quickly for usability.
+The Idle Time Limit does not specify the unit of time.",2018-04-11T01:25:58Z,2018-05-22T18:54:08Z,https://github.com/RocketChat/Rocket.Chat/issues/10415,1,48.86343,kurji,https://api.github.com/repos/RocketChat/Rocket.Chat,usability,0,1,0,0,0,0,0
+4,134929528,open,[Improvement] Mockup full window mode,"This is a proposal to use more efficiently using  of space in TDesktop: widescreen window and maximized window. It also keeps the messages bubbles design and a utility panel always visible.
+
+![mockup](https://cloud.githubusercontent.com/assets/5126124/13183655/c72e54cc-d716-11e5-864e-be910be531f0.png)
+
+The right panel is a proof of concept and may have another design and content. 
+The idea was born from the last change in the alignment of messages TDesktop in wide window and comments about usability popup showing emoji, sticker and GIF's. This panel can be extended to the use of bots.
+
+Cheers
+
+Note: Some friends mentioned that a similar design is used by Viber desktop. It is a good reference guide.
+
+![viber desktop](https://cloud.githubusercontent.com/assets/5126124/13186999/809ade8e-d727-11e5-96eb-f78a00c1868b.png)
+
+Obvious panels:
+
+![mockuppanel2](https://cloud.githubusercontent.com/assets/5126124/13203461/886a5362-d897-11e5-98d7-3d3612a7a5fc.png)
+
+![mockuppanel1](https://cloud.githubusercontent.com/assets/5126124/13203467/aa6b68de-d897-11e5-9a9a-4de54285abe4.png)
+",2016-02-19T17:47:18Z,2018-01-07T09:16:10Z,https://github.com/telegramdesktop/tdesktop/issues/1652,30,31.90748,diazbastian,https://api.github.com/repos/telegramdesktop/tdesktop,usability,0,0,0,0,0,0,0
+5,178987988,open,Promoting Usability within the Clincian-Patient Encounter via the SHR,"### Introduction
+
+Effective use of EHRs is recognized as a key element in achieving the Triple Aim—improving the patient experience of care (including quality and satisfaction), improving the health of populations and reducing the per capita cost of health care. Yet health care workers report unprecedented levels of burnout and dissatisfaction. This trend has prompted expansion of the Triple Aim to the Quadruple Aim [[1](http://www.annfammed.org/content/12/6/573.full)], which adds the goal of improving the work life of health care workers, both clinicians and non-clinicians, to the original three initiatives. EHR technology is cited as a major contributing factor to physician burnout [[2](http://www.rand.org/content/dam/rand/pubs/research_reports/RR400/RR439/RAND_RR439.pdf)]. Family Physicians have colloquially advocated for ""Replacing the WHACK [-a-Mole implementation of EHR driven workflows] with the LAC [Life After Clinic]"" as vision for what how improved EHR usability should reclaim time spent currently on after-hours documentation for the personal lives of clinicians.
+
+Here, usability challenges will be defined as product features or situations in which the design and implementation of EHRs do not align with the cognitive and/or workflow requirements and preferences of users within and across professional and patient roles and settings. This memo aims to describe the usability challenges that affect the clinician-patient relationship, which represent strategies by which the use of SHR can be promoted. This memo will aid in prioritizing key features of SHR development, which represent the tactics by which SHR will promote usability.
+### The structure of the broader problem of usability challenges
+
+Taking the above definition a a starting place, several interrelated domains emerge.
+- _Product design versus implementation_
+  Poor EHR design limits the potential for physician-patient engagement by interfering with face-to-face interaction with patients. Many local implementations of EHR products have been customized in an attempt to suit local needs, but the quality of these implementations varies greatly. EHR implementation is often viewed as a fixed cost, rather than an ongoing investment, requiring regular updates, training and iteration to function optimally.
+- _Cognitive requirements versus workflow requirements_
+  Current EHRs focus primarily on data collection rather than synthesis of data at the patient level. Current data synthesis methods are typically neither context nor patient specific. The lack of context awareness can lead to frequent clinical and administrative reminders that may force physicians to make hard stops, even for non-urgent matters, to address these issues. Features such as pop-up reminders, cumbersome menus and poor user interfaces interrupt workflow and  increase cognitive demands by forcing users to ""hunt"" through the interface to retrieve data, record data, and trigger actions in the clinical workflow. 
+- _Best practices versus preferences_
+  Physicians have not defined the clinical workflows health data products, such as EHRs, need to support. As a speciality that prides itself on individual excellence through purposeful effort and autonomous decision making, physicians may recoil to the notion that clinical workflows should be adapted to the needs of EHR systems. 
+- _Variation within professional roles_
+  Few EHR systems are built to accommodate physicians’ practice patterns and work flows, which vary depending on size, specialty and setting. Within one practice setting, workers of the same professional designation may have different roles based on unique training, responsibilities or level of experience (e.g. resident physician vs attending physician, medical assistant versus master medical assistant).
+- _Variation across professional roles_
+  The scope of practice of non-physician health care professionals varies according to state licensure laws. Current technology often requires clinicians to enter data or perform tasks that other team members could be empowered to complete by preventing delegation of tasks as appropriate.
+- _Variation across settings_
+  Various characteristics external to an EHR system - e.g. architectural, staffing, patient population - can profoundly affect the successful implementation of an EHR within a given clinical setting.
+- _Professionals versus patients_
+  EHR design has been heavily influenced by the data capture and billing needs of clinicians, and external influences (e.g. meaningful use) not relevant to the clinician-patient encounter. Most EHR systems are not designed to support digital patient engagement. Failure to incorporate increased interoperability between EHR systems, mHealth platforms, and telehealth technologies represents a missed opportunity to promote health and wellness and manage chronic illnesses.
+### Not all usability challenges are directly related to EHR software design
+
+As noted above, a number of factors external to EHRs may have considerable effects on usability, such as:
+- sub-optimal implementation
+- risk management concerns
+- institutional liability concerns
+- regulatory requirements 
+- inadequate training of users
+- suboptimal practice workflow processes 
+### Not all clinician-patient interactions involve face-to-face encounters utilizing EHRs
+
+At least 7 types of physician-patient encounter are envisioned in the health care system of the near future. The majority of these encounter types do not require use of an EHR at the point of care, which allows the possibility that a light weight alternative application could service the health data requirements of the patient and clinician.
+
+|  | _Synchronous_ | _Asynchronous_ |
+| --- | --- | --- |
+| _EHR Necessary_ | Face-to-face | EHR portal message |
+| _EHR Optional_ | Video chat, Telephone | Secure email,  Secure SMS, App-based messaging |
+### Key usability challenges physicians face with current EHRs
+
+The American Medical Association identified key challenges physicians face with current EHRs [[3](https://www.aace.com/files/ehr-priorities.pdf)]. Of these, several deal directly with usability challenges within the clinician-patient interaction.
+- Interference with the patient visit
+- Issues with care coordination due to lack of interoperability
+- Increased cognitive workload for physicians
+- Lack of system-design support for team-based care
+- Communicating with patients in a changing digital landscape
+
+Other key usability challenges deal more directly with the design and implementation of specific EHR products.
+- Lack of data liquidity and high switching costs
+- Lack of product modularity to support unique physician practices and population needs
+- Insufficient support for incorporating end-user input into product design and post-implementation feedback for product improvement
+### Usability priorities
+
+Based on these challenges, the AMA recommends eight EHR usability priorities to be urgently addressed. Of these, half relate directly to the clinician-patient interaction.
+
+**_Not Directly Related to Clinician Patient Interaction**_
+3) Promote care coordination.
+4) Offer product modularity and configurability.
+6) Promote interoperability and data exchange.
+8) Expedite user input into product design and post-implementation feedback.
+
+**_Directly Related to Clinician Patient Interaction**_
+1) Enhance physicians’ ability to provide high-quality patient care 
+- Promote effective communication and engagement between patients and physicians 
+- Reconfigure EHR interface seamlessly into the practice  
+- Rearrange electronic devices in the care setting to limit distractions. |
+
+2) Support team-based care
+- Allow physicians, or AI-agents, to dynamically allocate and delegate work to appropriate members of the care team as permitted by institutional policies. |
+
+5) Reduce cognitive work load
+- Manage information flow and adjust for context, environment and user preferences. 
+- Balance use of unstructured narrative data, which many physicians find more succinct and reflective of the patient’s perspective and physician’s thought process, against the need for structured data to assist with computability |
+
+7) Facilitate digital and mobile patient engagement  
+- Support synchronous and asynchronous communication with the clinical team 
+- Support health promotion and management of chronic disease 
+### Way Forward
+
+Based on the above findings, the following six projects are submitted for discussion. This is by no means intended to be an all inclusive of candidate projects that could demonstrate the potential for SHR to address usability challenges in the clinician-patient interaction. 
+
+**_1) Natively support USPSTF Grade A and B and Choosing Wisely recommendations within the SHR**_
+The United States Preventive Services Task Force Grade A and B recommendations detail the preventive health services that uncontroversially apply to all patients [[4](https://www.uspreventiveservicestaskforce.org/Page/Name/uspstf-a-and-b-recommendations/)]. The Choosing Wisely campaign is a collaboration between all major medical societies. Its recommendations highlight over-utilized services that provide low value to patient care and the health system [[5](http://www.choosingwisely.org/clinician-lists/)]. Taken together, these recommendations represent much of the uncontroversial ""what to do"" and ""what not to do"" elements of care. Since a primary care physician managing an average patient panel size would need to spend 37 hours a week providing all Grade A and B recommended services, without any other clinical activities, automating as much of this process as possible could generate a rapid positive impact for primary care workflow [[6](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1447803/)].
+
+**_2) Reconfigure data entry to support relationship building, minimize distractions, and be more user-friendly for clinicians and patients**_
+The data liquidity achieved through implementation of SHR allows for an ecosystem of related services to assist clinicians and patients with documentation. A variety of startups demonstrate some various approaches. Bright.md markets a ""virtual physicians assistant"" that will take a history through a basic online interface and develop a basic treatment plan [[7](http://bright.md/)]. The documentation can then be reviewed and altered by the clinician. Tonic provides accessible, easy to use, web and mobile based questionnaires to assist patients with entering, reviewing and updating the data in their health records [[8](http://www.tonicforhealth.com/)]. Lexenco leverages UMLS Metathesaurus concepts based and an open-source NLP engine to provide SaaS processing of clinical content and association with UMLS concept IDs [[9](http://www.lexenco.com/)]. Each of these individual offerings represents a partial solution to important usability challenges listed above. Leveraging multiple third-party solutions, i.e. these or others, within a clinical environment highlights the ""plug and play"" modularity that SHR empowers, demonstrating short term benefit to clinicians and patients without lengthy development timelines of a bespoke, potentially duplicative technology.
+
+**_3) Support for differential diagnosis**_
+The differential diagnosis (DDx) is a ranking of the likely explanation for the presenting signs and symptoms of a given patient. A DDx is most often ranked by probability, although it may also be ranked by disease severity (i.e. prognosis) or ease of treatment (i.e. pragmatism). The discipline of compiling and reviewing a DDx underlies much of the expert thinking in medicine. Computer systems are adept at generating probability-weighted lists. An implementation of SHR could assist with compiling a DDx and integrating it within the clinical workflow, as a form of CDS. Technology developed by Inferscience is relevant to this objective [[10](http://www.inferscience.com/)].
+
+**_4) Solving the Usability Challenges of Non-Physician Health Care Workers**_
+This is included as a placeholder. Susan and I agree that this is very important; however it may be out of scope as a primary focus for Jay Schnitzer's request to address clinician-patient usability.
+
+**_5) Assessing and Addressing Social Determinants of Health within the Clinical Encounter**_
+Placeholder for now. 
+
+**_6) SMS-based platform for asynchronous communication with the care team**_
+ Eva is an NLP-powered algorithm with access to the EHR and practice management software. She records her conversation with the patient within the EHR. Eva can report or collect structured data observations to or from the patient. When she does not know an answer, she triggers a medical assistant, triage nurse, or scheduler to call the patient, depending upon the issue. She can address most of the common reasons for calling the physician office, e.g. scheduling appointments, obtaining recent lab results, requesting updated referrals or medication refills, without a human-in-the-loop, and quickly trigger the appropriate human when necessary.
+",2016-09-23T22:38:15Z,2016-09-30T20:37:04Z,https://github.com/standardhealth/shr_design/issues/89,0,27.670965,jsnichols,https://api.github.com/repos/standardhealth/shr_design,usability,0,0,0,0,0,0,0
+6,173455547,open,Add a forum app to OCP?,"The purpose of adding a forum to OCP is for increased transparency in areas like the CVN group candidacy process, so that comments and information can be more democratically accessed and acted upon. On the priority of this task (from enric, telegram):  ""this in case we want it, should be after for the organization process. which is not so urgent""
+
+See https://djangopackages.org/grids/g/forums/
+Here are demos of the first three apps:
+- http://askbot.org/en/questions/
+- http://misago-project.org/
+- http://community.spirit-project.com/
+
+[Edit: the Spirit demo is not really a demo of the forum, just a splash page advertising the features.]
+[Another edit: added the actual demo for Spirit.]
+
+I'm looking at those from a technical viewpoint and will post findings as comments on this issue. If other people can add comments on features, usability, etc, that would be useful.
+",2016-08-26T13:40:33Z,2016-08-28T10:27:49Z,https://github.com/FreedomCoop/valuenetwork/issues/127,6,21.046295,bhaugen,https://api.github.com/repos/FreedomCoop/valuenetwork,usability,1,0,0,0,0,0,0
+7,264969745,open,"As a member of the public (permittee), I can enter in basic information (email) so that I can get a permit for Arapaho and Roosevelt National Forests","##Acceptance Criteria
+
+- [x] user can enter information that the forest service requires from the user to obtain a permit.
+- [x] user should be able to enter a quantity
+- [x] user should see the price per permit/tag
+- [x] user knows which forest they are entering information for.
+- [x] user should be able to submit the information and have it stored in the db for later retrieval.
+- [x] user should see verbiage describing what will happen in the flow after submission and that they will be returned to receive the permit. (will be fleshed out later once pay.gov integration is complete)
+
+## Definition of Done
+- [x] Code unit / e2e tested and comply with QWASP
+- [x] No new security vulnerabilities
+- [x] Internal team code review
+- [x] Documentation / readme.md / CircleCI updated
+- [x] Docker updated
+- [x] Compare finished design with mockup
+- [x] Usability tested (Bryan)
+
+## Tasks
+
+- [x] research and get pricing information for each pilot forest (Jane)
+- [x] user task flow model (Bryan, Jane)
+- [x] db model (email address, cost per tree and forest org id) (Shekar)
+- [x] migration (use dotransaction) (Shekar)
+- [x] routes in frontend (Cameron, Seth)
+- [x] write up form help text and boilerplate (Jane)
+- [x] html design mockup (Cameron, Seth)
+- [x] design approval (Melissa, Amber)
+- [x] view/component (Cameron, Seth)
+- [x] REST endpoints (GET POST)
+- [x] simplify/remove e2e functions that are used only once
+
+",2017-10-12T14:46:39Z,2018-01-30T19:41:52Z,https://github.com/nciinc/fs-permit-platform/issues/12,35,18.394978,sadlerw,https://api.github.com/repos/nciinc/fs-permit-platform,usability,0,0,0,0,0,0,0
+8,307924340,closed,GUI: Icon language for heavy(carry) vs small objects,"Currently:
+Player needs to memorize what type of item is a carry item and what is an inventory item.
+
+Problem:
+Bad usability, problem with flow, problematic readability
+
+Suggestion:
+Use different shape / color for each of the 2 categories.",2018-03-23T07:14:26Z,2018-04-12T00:58:59Z,https://github.com/StrangeLoopGames/EcoIssues/issues/6397,4,17.807854,Dreepa,https://api.github.com/repos/StrangeLoopGames/EcoIssues,usability,0,0,0,0,0,0,0
+9,274694843,open,As a user I need to know that a season's dates for a particular forest has not been configured yet so that I can check back later,"## Acceptance Criteria
+
+- [x] a user can tell that the current season is now over, i.e., after the season end date site clearly shows that permits can no longer be purchased until the next season begins (maybe use language like ""check back in Fall 2018"" instead of a particular date until the new season date is in the system.
+- [x] user cannot buy a permit or access any portions of the site for buying a permit (backend, frontend urls all secured and redirected - check redirect url back from pay.gov too)
+- [x] developers can easily flag whether season date is open or closed for testing etc. documented in readme
+
+## Tasks
+- [x] update user flow
+- [x] design what user sees when they click ""buy"" and the season is not yet open (text and view) (Jane/Bryan)
+- [x] modify the forest page with new alert (will)
+- [x] figure out how to run specs for season date started and season date not started (similar to authenticated on circle maybe) (will)
+- [x] determine if the landing page should indicate season is not yet open (Jane/Bryan)
+- [x] ensure that the existing links and buttons work when season is open (will)
+- [x] backend return 404 on all permit purchase endpoints if season not started (toggle as above) (will)
+- [x] same with /applications and all application routes on frontend (note that end date changes per forest) (will)
+- [x] change `undoAllSeed` to undo both intake and christmas tree seed files (shekar)
+- [x] remove console log from frontend code (error-message.component.ts)
+- [x] add info alert to frontend to indicate forest data is manipulated (will)
+- [x] fix special use sidebars (will)
+- [x] tts approval
+- [x] PO approval
+
+## Definition of Done
+- [x] Code unit / e2e tested and comply with QWASP
+- [x] No new security vulnerabilities
+- [x] Internal team code review
+- [x] Documentation / readme.md / CircleCI updated
+- [x] Docker updated
+- [x] Compare finished design with mockup
+- [ ] Usability tested",2017-11-16T23:02:29Z,2018-02-14T17:03:58Z,https://github.com/nciinc/fs-permit-platform/issues/102,33,15.164785,sadlerw,https://api.github.com/repos/nciinc/fs-permit-platform,usability,0,0,0,0,0,0,0
+10,310737885,closed,Easy mixup of personal and group conversations leaks sensitive information to wrong people,"<!-- This is a bug report template. By following the instructions below and filling out the sections with your information, you will help the developers get all the necessary data to fix your issue.
+You can also preview your report before submitting it. You may remove sections that aren't relevant to your particular case.
+
+Before we begin, please note that this tracker is only for issues. It is not for questions, comments, or feature requests.
+
+If you would like to discuss a new feature or submit suggestions, please visit the community forum:
+https://community.signalusers.org
+
+If you are looking for support, please visit our support center:
+https://support.signal.org/
+or email support@signal.org
+
+Let's begin with a checklist: Replace the empty checkboxes [ ] below with checked ones [x] accordingly. -->
+
+- [x] I have searched open and closed issues for duplicates
+- [x] I am submitting a bug report for existing functionality that does not work as intended
+- [x] I have read https://github.com/signalapp/Signal-Android/wiki/Submitting-useful-bug-reports
+- [x] This isn't a feature request or a discussion topic
+
+----------------------------------------
+
+### Bug description
+
+There is a common _usability bug_ of Signal. Lets say you are getting a Signal message on your mobile. You select the notification message, switching to your Signal app, opening the conversation. You now see the last part of the conversation dialogue between you and this single person. You now answer the message of that person, writing things that are meant to be read only by that single person. Just after sending the message (or never?) you realize that you just sent this message to a group chat of many people whose conversation happens to be filled with messages of you and the other person as long as your screen view/history is showing.
+
+Therefore, you accidentally sent a personal message to a group conversation which is a common bug I notice many times.
+
+You assumed, that you wrote your message in a private conversation because you have seen only one person's answers. Other people did not write for a longer period of time to that group conversation. You could have read the header information where you could have seen that this is not a person-to-person conversation. However, you concentrate on the bottom of the screen, where the received message could be seen and answer right below it. Therefore, it is easy to overlook the group chat header when answering a message in Signal. There is no other distinction between group and personal conversations.
+
+(This bug was issues before as https://github.com/signalapp/Signal-Android/issues/7158 and got closed due to spring cleaning and a changed template)
+
+### Steps to reproduce
+
+The situation in a private chat:
+
+- switch to a person-to-person conversation with person X
+- you see the most recent chat messages of X and yourself
+- you can answer right away and the message get sent to X
+
+Now the situation in a group chat:
+
+- now switch to a group conversation where X is part of as well
+- the most recent messages are only from you and X
+- it is easy to assume that this is a private chat between you and X: you only see messages from X and yourself, the lower part of the screen looks the same in group chats and in private chats:
+  - input field
+  - default text hint
+  - send button
+  - style
+- As a result, private text messages get sent to a group chat
+
+**Actual result:** Private message get sent to a group of people.
+**Expected result:** User should have recognized that the message is about to be sent to a group of people and not to a private chat.
+
+For a messaging app that emphasizes the importance of privacy, sending sensitive private information to a group of people by accident is considered an important issue IMO. Since there are easy to implement technical solutions to prevent this (see below), this is considered a bug and not a feature request.
+
+### Device info
+<!-- replace the examples with your info -->
+**Device:** OnePlus 5
+**Android version:** 8.0.0
+**Signal version:** 4.17.5
+
+### Possible mitigations
+
+There are multiple possible ways to fix this issue. A distinct background color is one which seemed to be a low-hanging fruit in terms of quick-fix because this features exists in the personal conversation settings and not in the group conversation settings for no obvious reason. However, there is still the issue that Signal might give away ""red"" for an arbitrary personal conversation but this only leads to you looking more closely to the header, realizing that it is save to write personal stuff in this conversation.
+
+Changing the ""Signal message"" default text of the input line would be another possibility although in my opinion, this is too subtle. I don't think that users do read this default text any more. Things like that is likely to be ignored just like banner ads are being ignored easily despite their prominent use of color or animation.
+
+I do think that changing the send-button to something like a send button that graphically includes multiple smaller send buttons or multiple of those paper-plane-symbols would be a very good distinction. IMHO this would be easy to notice and easy to explain: multiple paper-plane symbols reflect multiple messages that are sent out to multiple Signal clients.
+
+
+",2018-04-03T08:18:58Z,2018-04-03T16:15:00Z,https://github.com/signalapp/Signal-Android/issues/7606,4,13.328096,novoid,https://api.github.com/repos/signalapp/Signal-Android,usability,0,0,0,0,0,0,0
+11,270278438,closed,Event UI & model,"## Type
+- <U+2728> Feature
+This epic includes the things we want to work on in order to move away from using Drupal to Prismic. 
+
+## Why?
+- To support Events team on uploading next season events by 23 November
+- So that we can support the operational needs of the Events team, through ticketing and event statuses
+- So that we make improvements based on user research and usability recommendations, especially for mobile
+- So we don't have to run tests against two platforms
+- So the content contributors don't have to duplicate effort
+- So we can make contributor workflows better
+
+## Release 1
+- Core event information: Date, Time, Ticketing Info, Booking Info, Location, Booking Status, People involved
+- Event booking supported via Eventbrite
+- Booking statuses dynamically generated
+- Events ticket info shown in context
+- Structured metadata in place so Google can deal with it
+- Transition over to PP team 
+
+## To Do
+- [x] Review booking information for events template
+- [ ] Document content model
+
+## Metrics to monitor / Success
+Have number of bookings increased/decreased?
+Have no-shows increased?
+Scroll depth
+Can you find an event in Google and see the date and time?
+Usability testing demonstrates no significant usability problems",2017-11-01T11:26:01Z,2018-02-08T15:19:38Z,https://github.com/wellcometrust/wellcomecollection.org/issues/1790,14,4.9411306,jennpb,https://api.github.com/repos/wellcometrust/wellcomecollection.org,usability,0,0,0,0,0,0,0
+12,286106060,closed,[enhancement] Set mark on window when opening with exec (redux),"Some years back there was a good discussion about this in #1682 .  At the time it was determined that the use-case just wasn't there to make it worthwhile.  What with the proliferation of in-browser web-apps it may be time to reconsider.  As an example,  I typically run five to ten different ""applications"" in a web browser that I would like to be addressable from my window manager.   These are things like, email, chat programs, ticketing systems, management tools and more - all of which run inside a browser.   
+
+To accomplish this there are a few options:
+
+1. Run seperate browser instances
+This works - especially when coupled with something like electron and nativefier where each instance can have its own name and properties.  The trouble is that each of these instances is a huge resource hog.   Running more than six or seven of these at the same time will bring a quad-core system with 16g of RAM to its knees.   This makes it not really feasable at any sort of scale.
+
+2) Attempt to address the individual applications by their `title` properties.  
+This also works -  most of the time.  Unfortunately, the usability of this entirely depends on the websites you are using.  Browsers typically modify the window title based on the page you are on.  Some web pages, like google inbox, will maintain a fairly consistent set of window titles, while others, like the AWS console, don't.   This makes addressing based on `title` error-prone at best and broken at worst.   
+
+I know that in the past the opinion has been that the application author needs to fix their application, and that being unable to use class, title, instance or other window properties is a broken behavior.   However, I think that since the landscape has changed in the direction that it has, and since we are using the same ""binary"" (web browser) to access multiple ""applications"" (web pages) it may be beneficial to provide some funcationality for this use-case.
+
+
+-Thanks!
+
+  ",2018-01-04T20:36:59Z,2018-01-07T10:45:28Z,https://github.com/i3/i3/issues/3109,7,3.3653946,dansteen,https://api.github.com/repos/i3/i3,usability,1,0,0,0,0,0,0
+13,28438095,closed,Choice of security presets during setup,"If we want TextSecure to compete with W**_sapp, F_book and other less privacy/security focused apps and plattforms, it has to be as user friendly as them. And it should be. Otherwise it'll never get a significant market share with the average users.
+But we also want to provide maximum security for people who depend on it with their lives, maybe because they live in an undemocratic country and have an unpopular opinion, maybe because they are protesting the regime in Syria, maybe they are gay and happen to live in Uganda or any of the other 82 coutries where that can get you in jail or even executed.
+
+As TextSecure is supposed to be secure **and** user friendly there are going to be more and more cases where we will have to decide on a default behaviour, often between the safer and the more convenient option.
+Many of the convenient features, which many users want, because they know and love them from W**_sapp, F_book and other less privacy/security focused apps and plattforms leak data, which, in some really bad cases, could lead to people getting hurt or worse.
+
+An example would be a notification popup with the message content like #798 requests. In some cases even mentioning the sender alone can be a threat (#308 and #366).
+It gets really bad if this can even happen on a locked phone (#198).
+
+If we neither want to force the average user to go deep into the advanced settings to manually activate all the features they expect (really bad usability) nor want to endanger some users by choosing insecure but convenient defaults, we should ask the user at the setup level what their use case is:
+- casual user
+- moderately security concious user
+- tinfoilhat™ / protester in $nodemocracyhere 
+
+Based on their choice we'll set default settings for the above mentioned features, as well as security features like #175, #226 and #328 and future convenience features.
+
+It should also be possible to re-run this from the advanced settings.
+
+One of the most important presets for the paranoid mode would be to turn off SMS messages entirely, because the metadata, which is the most important tool in modern surveillance, can't be hidden. The network providers can also easily scan the traffic and find out who uses TS, which will put people at risk.
+
+With data that problem doesn't exist, because the relay (GCM) probably isn't controlled by the ""enemy"" and it works like an anonymizing proxy, because lots of normal apps use GCM.
+As long as HTTPS (TLS) isn't broken (again...), data should be safe.
+",2014-02-27T17:35:36Z,2018-04-02T21:25:04Z,https://github.com/signalapp/Signal-Android/issues/838,41,3.2995985,generalmanager,https://api.github.com/repos/signalapp/Signal-Android,usability,0,0,0,0,0,0,0
+14,267392447,closed,Can't get examples to work,"I have websockets with different scripts working but really like the usability the lib implies. but i can't get any of the samples work. 
+
+```php
+<?php
+require __DIR__ . ""/vendor/autoload.php"";
+// Non-blocking server implementation based on amphp/socket keeping track of connections.
+use Amp\Loop;
+use Amp\Socket\ServerSocket;
+use function Amp\asyncCall;
+Loop::run(function () {
+    $server = new class {
+        private $uri = ""tcp://127.0.0.1:9002"";
+        // We use a property to store a map of $clientAddr => $client
+        private $clients = [];
+        public function listen() {
+            asyncCall(function () {
+                $server = Amp\Socket\listen($this->uri);
+                print ""Listening on "" . $server->getAddress() . "" ..."" . PHP_EOL;
+                while ($socket = yield $server->accept()) {
+                    $this->handleClient($socket);
+                }
+            });
+        }
+        private function handleClient(ServerSocket $socket) {
+            asyncCall(function () use ($socket) {
+                $remoteAddr = $socket->getRemoteAddress();
+                // We print a message on the server and send a message to each client
+                print ""Accepted new client: {$remoteAddr}"". PHP_EOL;
+                $this->broadcast($remoteAddr . "" joined the chat."" . PHP_EOL);
+                // We only insert the client afterwards, so it doesn't get its own join message
+                $this->clients[$remoteAddr] = $socket;
+                while (null !== $chunk = yield $socket->read()) {
+                    $this->broadcast($remoteAddr . "" says: "" . trim($chunk) . PHP_EOL);
+                }
+                // We remove the client again once it disconnected.
+                // It's important, otherwise we'll leak memory.
+                unset($this->clients[$remoteAddr]);
+                // Inform other clients that that client disconnected and also print it in the server.
+                print ""Client disconnected: {$remoteAddr}"" . PHP_EOL;
+                $this->broadcast($remoteAddr . "" left the chat."" . PHP_EOL);
+            });
+        }
+        private function broadcast(string $message) {
+            foreach ($this->clients as $client) {
+                // We don't yield the promise returned from $client->write() here as we don't care about
+                // other clients disconnecting and thus the write failing.
+                $client->write($message);
+            }
+        }
+    };
+    $server->listen();
+});
+```
+
+when i make connections from a simple js ws connection i consistantly get errors.
+
+the browser gives me this error:
+
+```
+Uncaught (in promise) {message: ""Could not establish connection. Receiving end does not exist.""}
+callbackArgs @ browser-polyfill.js:588
+sendResponseAndClearCallback @ VM35 extensions::messaging:415
+disconnectListener @ VM35 extensions::messaging:433
+EventImpl.dispatchToListener @ VM28 extensions::event_bindings:403
+publicClassPrototype.(anonymous function) @ VM34 extensions::utils:140
+EventImpl.dispatch_ @ VM28 extensions::event_bindings:387
+EventImpl.dispatch @ VM28 extensions::event_bindings:409
+publicClassPrototype.(anonymous function) @ VM34 extensions::utils:140
+dispatchOnDisconnect @ VM35 extensions::messaging:376
+index.html:13 WebSocket connection to 'ws://127.0.0.1:9002/' failed: Error during WebSocket handshake: net::ERR_INVALID_HTTP_RESPONSE
+WebSocketTest @ index.html:13
+(anonymous) @ VM74:1
+browser-polyfill.js:588 Uncaught (in promise) {message: ""Could not establish connection. Receiving end does not exist.""}
+callbackArgs @ browser-polyfill.js:588
+sendResponseAndClearCallback @ VM35 extensions::messaging:415
+disconnectListener @ VM35 extensions::messaging:433
+EventImpl.dispatchToListener @ VM28 extensions::event_bindings:403
+publicClassPrototype.(anonymous function) @ VM34 extensions::utils:140
+EventImpl.dispatch_ @ VM28 extensions::event_bindings:387
+EventImpl.dispatch @ VM28 extensions::event_bindings:409
+publicClassPrototype.(anonymous function) @ VM34 extensions::utils:140
+dispatchOnDisconnect @ VM35 extensions::messaging:376
+browser-polyfill.js:588 Uncaught (in promise) {message: ""Could not establish connection. Receiving end does not exist.""}
+callbackArgs @ browser-polyfill.js:588
+sendResponseAndClearCallback @ VM35 extensions::messaging:415
+disconnectListener @ VM35 extensions::messaging:433
+EventImpl.dispatchToListener @ VM28 extensions::event_bindings:403
+publicClassPrototype.(anonymous function) @ VM34 extensions::utils:140
+EventImpl.dispatch_ @ VM28 extensions::event_bindings:387
+EventImpl.dispatch @ VM28 extensions::event_bindings:409
+publicClassPrototype.(anonymous function) @ VM34 extensions::utils:140
+dispatchOnDisconnect @ VM35 extensions::messaging:376
+browser-polyfill.js:588 Uncaught (in promise) {message: ""Could not establish connection. Receiving end does not exist.""}1
+```
+
+whiel the server log says accepted new client with an immediate client disconnected before the ws.send() that is wrapped int he ws.open callback can even do anything.
+
+Im just looking for a bit of help getting started with this lib
+
+thanks",2017-10-21T16:03:59Z,2017-10-21T18:36:33Z,https://github.com/amphp/socket/issues/41,1,2.6050193,dking3876,https://api.github.com/repos/amphp/socket,usability,0,0,0,0,0,0,1
+15,217092195,closed,Conversion of KeeFox to WebExtensions,"Per the [Milestones schedule](https://github.com/kee-org/browser-addon/milestones) on this repository, the bulk of all efforts until the release of version 2.0 will be on ensuring that we can get something vaguely resembling KeeFox 1.6 to run in Firefox 57+ (and Google Chrome, etc.)
+
+That means re-writing the add-on to use [WebExtensions](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/What_are_WebExtensions).
+
+I've made a good start by pulling over some code snippets from KeeFox 1.6 and piecing them together in a way that has resulted in the current ""pre-alpha"" version having the following broadly working:
+
+- Basic add-on architecture (build, default config, logging to console)
+- Connection from add-on to the existing KeePassRPC plugin version
+- Rendering state of connection on a browser button/icon on the browser toolbar
+- Detection of forms on web pages
+- Sending request to find matching logins and receiving list of logins in the web page
+
+The lists below will be expanded as we delve into more detail and see how the WebExtensions API evolves over the next 6 months. With some luck we might be able to implement some items from the ""uncertain"" list although it's also likely other features will be added to the two lists.
+
+### Functionality we are unable to retain
+
+- Assisted KeePass installation and configuration (prohibited by WebExtensions)
+- Some customised keyboard shortcut keys (it should be possible for each user to manually re-configure them though)
+- Logging to files (prohibited by WebExtensions)
+- Protecting the KeePassRPC authentication token with the Firefox master password (prohibited by WebExtensions)
+
+### Functionality we are unlikely to retain (either too much work or uncertain technical viability)
+
+- Some customised keyboard shortcut keys (we probably won't migrate the current settings but some keyboard shortcuts that relate to specific web pages can be supported if we have time)
+- Launching KeePass from within Firefox (launching executables is banned although if a user were to install a hypothetical ""KeeFox helper"" executable we might be able to get something to work but it is unlikely that will exist on most user's systems so this work goes to the bottom of the priority list)
+- Multi-page logins (the code that will deal with filling and saving passwords gets created and destroyed on every page load, making this a technically difficult problem to solve)
+- Some assistive UI (e.g. new user advice, tips, security warnings). Things like ""Save/update password?"" should be possible in some form but may suffer from reduced usability
+- Usage metrics (this is useful for planning how to improve KeeFox but with limited control over the changes we are making for version 2.0, a reduction in the number of platforms running version 2.0 and a lack of time to analyse and act on the limited data we could collect, it's not worthwhile initially)
+- HTTP Auth/Proxy/Windows Auth dialog box filling and saving (not possible to modify the dialog box, other more-limited approaches could work if we have time though)
+
+Please feel free to comment or ask questions below. I'll try to reply regularly but hope you'll understand that my priority is developing the code rather than answering questions that have already been answered multiple times. If you can help answer anyone else's questions or get involved in other discussion threads that would be great.",2017-03-26T21:42:10Z,2018-01-08T21:47:42Z,https://github.com/kee-org/browser-addon/issues/1,60,1.0725006,luckyrat,https://api.github.com/repos/kee-org/browser-addon,usability,1,0,0,0,0,0,0
+16,178357517,closed,Launcher UX design improvements,"Our patcher leaves a bit to be desired as far as usability goes.  so @Heartfyre is working on some UX design improvements.
+",2016-09-21T14:07:52Z,2016-11-18T18:21:13Z,https://github.com/CUModSquad/Camelot-Unchained/issues/78,51,0.13224378,codecorsair,https://api.github.com/repos/CUModSquad/Camelot-Unchained,usability,0,0,0,0,0,0,0
+17,146343144,closed,Create intro email blast for All-MoFo,"## Introducing Mozilla Chat
+
+tl;dr: Join us at https://chat.mozillafoundation.org/. Native apps available in ""How to Join"" below.
+
+We've all used many chat clients here at Mozilla. There’s IRC, Skype, Google Chat, Slack, Telegram, WhatsApp, and Minigroups, not to mention good old-fashioned email. Each has its own strengths yet all of them combined create a weakness in the organization’s communication, with teams scattered across these services. These tools have a variety of unique features, but there seem to be a common subset of functional and ideological goals that align with those of Mozilla.
+
+As we search for the right tool, the Engineering and Design teams have been evaluating Mattermost, an open source Slack-alternative–we can all just call it, ""Chat"". We’ve used it for a few months, contributed some code, and worked out the major usability bugs. Now we’d like to invite the rest of the Foundation to try it out and let us know what you think.
+#### Goals of chat software
+- Be open and promote inclusivity
+- Reduce the need for emails
+- Enable access to conversations at any time on any device (not just while online)
+- Offer ability to manage conversations across projects and reduce the need for meetings.
+#### Useful features of Chat
+- Messaging and files
+- Send messages and comments across public, private, and 1:1 channels
+- Personalize notifications
+- Share files and images
+- Archiving and search
+- Search all channels for past messages and comments
+- View recent mentions of your name, username, nickname, and custom search terms
+- Receive messages even if you’re offline
+- Embeddable Gif support
+#### How to join
+
+Visit https://chat.mozillafoundation.org and sign up. (It’s not integrated with any existing accounts, yet.)
+
+You can keep it in a browser tab, but you might find it more helpful to download a native app:
+1. Download for your platform
+   - [OSX](https://github.com/mattermost/desktop/releases/download/v1.1.0/mattermost-desktop-1.1.0-osx.tar.gz)
+   - 64-bit [Windows](https://github.com/mattermost/desktop/releases/download/v1.1.0/mattermost-desktop-1.1.0-win64.zip)
+   - Other Desktop releases available [here](https://github.com/mattermost/desktop/releases)
+2. Install/Copy the Mattermost executable to your Applications folder.
+3. If Mac OS gives you an “unsigned developer” warning while opening the app, ctrl-click on the app and click open.
+4. Enter Team: `Mozilla`, URL: `https://chat.mozillafoundation.org`
+5. Create an account or log in.
+
+Mobile apps are available for iOS and Android
+
+Once you're in, you can give feedback in the Mozilla Chat Dev channel.
+#### Notifications:
+
+Notifications can be customized on an account level and a channel level. 
+- Account Level: Click the menu icon in the top left corner next to your username and check out “Account Settings”.
+- Channel level: when in a channel, click the name of it at the top and look at notification preferences. You might want to disable unread notifications for certain channels unless you’re specifically mentioned.
+#### Examples
+##### Embedded previews of images- including gifs! ![chat-gif](https://cloud.githubusercontent.com/assets/1682681/14321423/1beec600-fbe7-11e5-8149-e92290561fba.gif)
+##### Attach files to your conversations! ![chat-attach](https://cloud.githubusercontent.com/assets/1682681/14464033/41609644-009b-11e6-8fda-531433e88938.gif)
+##### Direct message users from the sidebar or using the /msg command ![chat-dm](https://cloud.githubusercontent.com/assets/1682681/14464051/56188ba0-009b-11e6-8271-3a0052f72170.gif)
+##### Local notifications for mentions, and the ability to mention a whole channel at once (but remember, with great power comes great responsibility) ![chat-mentions](https://cloud.githubusercontent.com/assets/1682681/14464065/612ed3e6-009b-11e6-9b05-c93ff8daa7ec.gif)
+##### Search every conversation you’re a part of at once! Or even search for all mentions of yourself using the @ button. ![chat-search](https://cloud.githubusercontent.com/assets/1682681/14464080/7143e92e-009b-11e6-98ff-3ea45ac8ea8c.gif)
+",2016-04-06T15:05:44Z,2016-04-12T17:35:08Z,https://github.com/mozilla/chat.mozillafoundation.org/issues/78,13,0.02131116,alanmoo,https://api.github.com/repos/mozilla/chat.mozillafoundation.org,usability,0,0,0,0,0,0,0
+18,121849204,closed,various feature requests,"Miscellaneous feature requests from emails, because I don't want to fill up the issues with one for each until you're ready to work on them (but feel free to split this up if you prefer an issue for each):
+- [ ] 1. **Buffs** - ""I would like to have an information about being buffed""
+- [x] 2. **Menu button for left-side menu** -- ""The menu button does not work (I am using the Galaxy S4). It would be nice to see the menu, like when swiping from the left edge."" _[I agree!]_
+- [x] 3. **Keyboard hiding** - ""on party chat, after I send the message, the keyboard should hide."" _See also https://github.com/HabitRPG/habitrpg-android/issues/172 ""Keyboard should close when switching view""_
+- [ ] 4. **Streaks** - ""Please add it so that it shows counts for continuous dailies done in a row!""
+- [ ] 5. **Mounts for Party** - ""When I go to Party->Members, I don't see mounts."" (_I've seen that comment two or three times, but it's funny - no one ever comments on the lack of pets or backgrounds._)
+- [ ] 6. **Ticked Dailies not clear enough** - ""One issue is that the visual messaging doesn't seem to be clear when I tick vs. Untick a daily. I installed the app when I already had a number of ticked dailies for the day."" -- I'm seeking more feedback about this. https://mail.google.com/mail/u/0/#sent/1518f8fc3f3dbcde
+- [ ] 7. **Headings in menu** - could be clearer that they are headings? - ""Inventory is not loading, it's slightly greyed out.""
+- [ ] 8. **FAB for adding items has usability problems** - ""While looking at my TODOs, I click the bottom-right + icon. I am disappointed that the + icon forces me to again choose a task type instead of creating a TODO (or whatever other task type I am currently browsing). Also, if I mis-tap when aiming for + New Habit, I will edit whatever task is underneath my finger. That seems distracting.""
+- [ ] 9. **Sound effects** - ""please add the sounds from habitica website... They are now connected in my brain with positive motivation.""  -- I know this might seem like a minor feature, but that comment about motivation is interesting and valuable. Triggers and rewards are an important part of productivity, and if the sound effects on the website have become integral to your motivation, it would be disappointing to not have them in the app too. I'm thinking this might be a feature we'd want to add sooner rather than later, if it's not too difficult to implement.
+- [ ] 10. **Reminders** - ""multiple reminders through out the day instead of just one reminders for dailies!""
+- [ ] 11. **Results of completing tasks could be clearer** - ""Better view of the points that get updated and pictures of the Drop items""
+- [ ] 12. **Ability to move tasks to a different sort order**
+- [ ] 13. **Use slide-down to sync tasks** -- ""have a Task page refresh with a slide down method (like the Party page Chat refresh method)!""
+- [ ] 14. **Quest invitation accept/reject**
+",2015-12-12T11:21:52Z,2016-03-15T10:22:27Z,https://github.com/HabitRPG/habitica-android/issues/215,4,0.010063046,Alys,https://api.github.com/repos/HabitRPG/habitica-android,usability,1,0,0,0,0,0,0
+19,71072874,closed,Notification bubble-box pop-up on a new message,"```
+Can you, please, add a support for a notification bubble-box pop-up
+messages on new incoming text messages?
+
+There can be two cases, what to display in bubble-box, according to the
+type of the incoming message:
+
+a) on a private incoming message, a bubble-box can contain next message:
+""You have a new message from %username%""
+
+b) if it is a global chat message, a bubble-box can display a snippet of
+that message.
+
+A bubble-box can be displayed for some period of time.
+
+Along with an animated tray icon (issue id:11), it can be a very huge step
+as an overall usability enhancement.
+
+Thanks!
+
+P.S. trayIcon.displayMessage();
+```
+
+Original issue reported on code.google.com by `baki...@gmail.com` on 5 Jun 2009 at 5:37
+",2015-04-26T14:10:04Z,2015-04-26T14:10:05Z,https://github.com/nirmalsinghania2008/kouchat/issues/13,12,0.00111764,GoogleCodeExporter,https://api.github.com/repos/nirmalsinghania2008/kouchat,usability,1,0,0,0,0,0,0
+20,62020195,closed,Notification bubble-box pop-up on a new message,"```
+Can you, please, add a support for a notification bubble-box pop-up
+messages on new incoming text messages?
+
+There can be two cases, what to display in bubble-box, according to the
+type of the incoming message:
+
+a) on a private incoming message, a bubble-box can contain next message:
+""You have a new message from %username%""
+
+b) if it is a global chat message, a bubble-box can display a snippet of
+that message.
+
+A bubble-box can be displayed for some period of time.
+
+Along with an animated tray icon (issue id:11), it can be a very huge step
+as an overall usability enhancement.
+
+Thanks!
+
+P.S. trayIcon.displayMessage();
+```
+
+Original issue reported on code.google.com by `baki...@gmail.com` on 5 Jun 2009 at 5:37
+",2015-03-16T09:19:28Z,2015-03-16T09:19:31Z,https://github.com/srinivaskalyani/kouchat/issues/13,12,0.000810015,GoogleCodeExporter,https://api.github.com/repos/srinivaskalyani/kouchat,usability,1,0,0,0,0,0,0
+21,61859551,closed,Notification bubble-box pop-up on a new message,"```
+Can you, please, add a support for a notification bubble-box pop-up
+messages on new incoming text messages?
+
+There can be two cases, what to display in bubble-box, according to the
+type of the incoming message:
+
+a) on a private incoming message, a bubble-box can contain next message:
+""You have a new message from %username%""
+
+b) if it is a global chat message, a bubble-box can display a snippet of
+that message.
+
+A bubble-box can be displayed for some period of time.
+
+Along with an animated tray icon (issue id:11), it can be a very huge step
+as an overall usability enhancement.
+
+Thanks!
+
+P.S. trayIcon.displayMessage();
+```
+
+Original issue reported on code.google.com by `baki...@gmail.com` on 5 Jun 2009 at 5:37
+",2015-03-15T16:27:38Z,2015-03-15T16:27:41Z,https://github.com/Lavoista/kouchat/issues/13,12,0.000782204,GoogleCodeExporter,https://api.github.com/repos/Lavoista/kouchat,usability,1,0,0,0,0,0,0
+22,56914135,closed,navigation flaws and UX/UI confusion,"I've spend quite some time exploring the latest beta and took some notes concerning problems the average user will probably face in day to day usage.
+iPhone5s 8.1.2 (Signal 2.0 Beta 1/31)
+##### Recipient Information / Interaction
+
+Don't hide it and enable user interaction! 
+The only way to get to the contact information of a recipient seems to be:
+1. Make sure you are in a group with them
+2. Go to the members view via group info overlay
+3. Select them in the list
+
+A far more suitable option would be to also have the ""group information"" metaphor in the 1 to 1 chat views.
+Signal wouldn't have to hide key verification and the contact information view would be accessible in a appropriate way. The overlay could state something like: [  Call  Verify  More   ]
+
+Users expect to find buttons with the same function at the same places.
+I have noticed that calling a Signal v1.0.8 / Redphone only user leaves the chat view with the call icon in the upper right corner. Doing the same with an Signal 2.0 or android user that uses both, textsecure and redphone, the call icon is visible as long as I don't type anything in the textfield. Placing a call requires you to either:
+- Delete your input
+- Go back to the Inbox pretending you want to start a new conversation and press the call icon
+
+(your input will be lost either way see ""Keep state (keyboard text input)"")
+##### Branding < Usability
+
+The Signal icon can't be part of the navigation stack!
+This is the first serious iOS project I have seen where the app icon is used in the navigation stack and as view title.
+The available main views are the ""Inbox"" and ""Archive"" (or other suitable strings) but not an icon.
+_Q: If i have a chat view open already where will I end up if i tap the signal icon back button?_
+The navigation stack is not made for having a nice translation only. It's main purpose is providing information about where we're coming from and going to. Otherwise you could use a modal view without a semantic difference.
+
+Another point is the textsecure send icon vs ""Send"" as string but I will bring that up in  #577
+##### Keep state (keyboard text input)
+
+It is very disturbing to lose unfinished inputs when switching between chats. While every serious ""competing"" messaging app and the system app keeps it.
+",2015-02-07T15:11:25Z,2015-02-21T11:34:57Z,https://github.com/signalapp/Signal-iOS/issues/579,4,0.00067796,abcdev,https://api.github.com/repos/signalapp/Signal-iOS,usability,0,0,0,0,0,0,0
+23,5452235,closed,Add Posting Keyboard Shortcut,"Adding a keyboard shortcut adds usability for chat interfaces like gmail.
+
+I have this feature mostly implemented using
+
+```
+document.activeElement;
+```
+
+however, if the active element is within an iframe, it returns the reference to the iframe instead of the actual active element. We probably need to use the Firefox API at the extension level to walk into the active iframe and get the active form element or editable div.
+
+This can be implemented by adding a menu to, for example browser.xul:
+
+```
+<keyset id=""mainKeyset"">
+    <key id=""key_convert"" key=""x"" modifiers=""accel alt"" oncommand=""privlyExtension.keyboardCommand()""/>
+</keyset>
+```
+
+Then adding the handler in extension-host-interface which asks for the cursor's current position using document.activeElement, and posts the content.
+",2012-07-05T20:12:27Z,2014-12-26T02:53:40Z,https://github.com/privly/privly-firefox/issues/16,4,0.000501501,smcgregor,https://api.github.com/repos/privly/privly-firefox,usability,0,0,0,0,0,0,0
